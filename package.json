@@ -16,6 +16,7 @@
   "dependencies": {
     "bootstrap-vue": "^2.15.0",
     "firebase": "^7.16.0",
+    "mdbvue": "^6.7.1",
     "node-sass": "^4.14.1",
     "sass-loader": "^9.0.2",
     "vue": "^2.5.2",

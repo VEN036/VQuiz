@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1 class="heading">add new question</h1>
+    <h1 class="title">Add New Question</h1>
+    <br>
     <div>
       <input class="questionbox"
         v-model="question.title"
@@ -8,8 +9,8 @@
       />
     </div>
     <br>
-    <div>
-      <QuestionType
+    <div class="type_select">
+      <QuestionType class="ques_type"
         v-for="(questiontype, index) in questiontypes"
         :key="index"
         :option="questiontype"
@@ -17,14 +18,15 @@
         :questiontype="question.type"
         tabindex="0"
       >
-        <input type = "radio"
-          name="checkmark"
+        <input type="checkbox" value="checkbox"
+          name="checkbox"
           v-if="questiontype.code === question.type"
-        >
+        />
       </QuestionType>
     </div>
-    <div v-if="question.type == 'T'" class="tf-answer-section">
-      <QuestionType
+    <br>
+    <div v-if="question.type == 'T'" class="true_false">
+      <QuestionType class="tf_ans"
         v-for="(tfchoice, index) in tfchoices"
         :key="index"
         v-model="question.tfanswer"
@@ -32,7 +34,7 @@
       >
       </QuestionType>
     </div>
-    <div v-if="question.type == 'M'">
+    <div v-if="question.type == 'M'" class="mcq">
       <textarea
         v-for="(answer, index) in question.mcqanswers"
         :key="index"
@@ -42,14 +44,14 @@
         :placeholder="`answer ${index + 1}`"
         v-bind:icon="true"
       >
-        <input type="radio"
+        <input type="checkbox"
           name="cancel"
           v-if="!answer.correct"
           v-model="answer.correct"
           @click="answer.correct = !answer.correct"
           v-bind:interactive="true"
         />
-        <input type="radio"
+        <input type="checkbox"
           name="checkmark"
           v-if="answer.correct"
           v-model="answer.correct"
@@ -58,13 +60,10 @@
         />
       </textarea>
     </div>
-    <div>
-      <button
-        theme="primary"
-        value="save and add more"
-        @click="handleAddQuestion()"
-      />
-      <button theme="secondary" value="discard" />
+    <br>
+    <div class="final_button">
+      <button class="btn btn-success" @click="handleAddQuestion()"> Save and More</button>
+      <button class="btn btn-danger" value="discard"> Cancel </button>
     </div>
   </div>
 </template>
@@ -150,32 +149,91 @@ export default {
 </script>
 
 <style>
-  .heading {
-    font-size: 2.7rem;
-    font-weight: 500;
+  .backgroud {
+    color:aquamarine;
+  }
+  .title {
+    font-weight: normal;
+    font-size: 28px;
+    color: #55d644;
+    line-height: 1.0;
+    margin: 20px 0;
   }
   .questionbox {
     height: calc(3.0em + 1rem + 4px);
     width: calc(50.5em + 1rem + 4px);
     padding: .5rem 1rem;
     margin-right:30%;
+    margin-left:60px;
     font-size: 1.25rem;
     line-height: 5.5;
     border-radius: .3rem;
   }
 
-  .ques_type1 {
-    margin: auto;
+  .type_select {
+    float: center;
+    margin-right: 70%;
+    z-index: 499;
+    font-size:1.50rem;
+    color:limegreen;
   }
 
-  .select_radio {
-    position: absolute;
-    top: .25rem;
-    left: -1.5rem;
-    display: block;
-    width: 1rem;
-    height: 1rem;
-    content: "";
-    background: no-repeat 50% / 50% 50%;
+  .ques_type {
+    background-color: rgb(103, 174, 195);
+    margin:15px;
+    margin-left: 100px;
+    border:powderblue;
+    color: rgb(0, 0, 0);
+    font-family: "Source Sans Pro", system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 15px 20px;
+    text-transform: uppercase;
+    -webkit-transition: .2s ease all;
+    -o-transition: .2s ease all;
+    transition: .2s ease all;
+  }
+
+  .true_false {
+    display: flex;
+    color:teal;
+    border:springgreen;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+    flex: 1;
+    display: flex;
+  }
+
+  .tf_ans {
+    height: 45px;
+    width: 70px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(15, 200, 157);
+    font-family: "Source Sans Pro", system-ui, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    line-height: 38px;
+    font-weight: 600;
+    margin: 0px 8px 10px 0px;
+    border-radius: 15px;
+    padding: 0px 12px;
+    text-decoration: none;
+  }
+
+  .mcq {
+    display: flex;
+    min-height: 10vh;
+    justify-content: center;
+    margin: 0px 8px 10px 0px;
+  }
+
+  .final_button {
+    flex: 1;
+    align-self: flex-end;
+    align-items: flex-end;
+    justify-content: flex-end;
   }
 </style>

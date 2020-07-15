@@ -4,7 +4,7 @@
     @click="updateQuestionType()"
     @keydown.space="updateQuestionType()"
   >
-    <span class="option-name">{{ option.name }}</span>
+    <span class="option">{{ option.name }}</span>
     <slot></slot>
   </div>
 </template>
@@ -37,3 +37,6 @@ export default {
   }
 }
 </script>
+
+<style>
+</style>
