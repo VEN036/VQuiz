@@ -27,7 +27,7 @@
         </ul>
         <ul class="nav navbar-nav flex-row float-right">
           <li class="nav-item">
-            <router-link class="nav-link pr-4" to="/playquiz">
+            <router-link class="nav-link pr-4" to="/createquestions">
             <img src="https://img.icons8.com/small/2x/create-new.png">
               create
             </router-link>

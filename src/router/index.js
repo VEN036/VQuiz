@@ -7,6 +7,8 @@ import ForgotPassword from '@/components/ForgotPassword'
 import Profile from '@/views/Profile'
 import DashBoard from '@/views/DashBoard'
 import PlayQuiz from '@/views/PlayQuiz'
+import CreateQuestions from '@/views/CreateQuestions'
+import QuestionType from '@/views/QuestionType'
 
 Vue.use(Router)
 
@@ -46,6 +48,16 @@ export default new Router({
       path: '/playquiz',
       name: 'PlayQuiz',
       component: PlayQuiz
+    },
+    {
+      path: '/createquestions',
+      name: 'CreateQuestions',
+      component: CreateQuestions
+    },
+    {
+      path: '/questiontype',
+      name: 'QuestionType',
+      component: QuestionType
     }
   ]
 })

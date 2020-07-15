@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import * as firebase from 'firebase'
+import 'firebase/auth'
+// import "firebase/database"
+import 'firebase/firestore'
 
 Vue.config.productionTip = false
 
@@ -15,3 +18,13 @@ const firebaseConfig = {
 }
 
 firebase.initializeApp(firebaseConfig)
+
+const auth = firebase.auth()
+const fs = firebase.firestore()
+const quizRef = fs.collection('quiz')
+const usersRef = fs.collection('users')
+// const db = firebase.database()
+// const timestamp = fs.ServerValue.TIMESTAMP
+const timestamp = firebase.firestore.Timestamp
+
+export { auth, fs, timestamp, quizRef, usersRef }
